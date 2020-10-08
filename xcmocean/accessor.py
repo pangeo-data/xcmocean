@@ -19,20 +19,26 @@ class xromsDataArrayAccessor:
     @property
     def div(self):
         return DIV[self.vartype()]
-
     
-    def plot(self, *args, **kwargs):
-        
+    
+    def plot(self, *args, **kwargs):       
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
             self.da.plot(*args, **kwargs)
+    
+    
+    def cfplot(self, *args, **kwargs):
+        import cf_xarray
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+            self.da.cf.plot(*args, **kwargs)
 
     def vartype(self, verbose=False):
         for vartype, pattern in REGEX.items():
             # match variable names
-            if re.search(pattern, self.da.name.lower()):
-                if verbose:
-                    print('%s matches %s in name' % (pattern, self.da.name.lower()))
-                return vartype
+            if self.da.name is not None:
+                if re.search(pattern, self.da.name.lower()):
+                    if verbose:
+                        print('%s matches %s in name' % (pattern, self.da.name.lower()))
+                    return vartype
             for key, value in self.da.attrs.items():
                 if isinstance(value, str):
                     if re.search(pattern, value):
