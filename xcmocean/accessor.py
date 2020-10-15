@@ -23,31 +23,31 @@ class xromsDataArrayAccessor:
     
     def plot(self, *args, **kwargs):       
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
-            self.da.plot(*args, **kwargs)
+            return self.da.plot(*args, **kwargs)
     
     
     def cfplot(self, *args, **kwargs):
         import cf_xarray
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
-            self.da.cf.plot(*args, **kwargs)
+            return self.da.cf.plot(*args, **kwargs)
     
     
     def cfpcolormesh(self, *args, **kwargs):
         import cf_xarray
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
-            self.da.cf.plot.pcolormesh(*args, **kwargs)
+            return self.da.cf.plot.pcolormesh(*args, **kwargs)
     
     
     def cfcontourf(self, *args, **kwargs):
         import cf_xarray
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
-            self.da.cf.plot.contourf(*args, **kwargs)
+            return self.da.cf.plot.contourf(*args, **kwargs)
     
     
     def cfcontour(self, *args, **kwargs):
         import cf_xarray
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
-            self.da.cf.plot.contour(*args, **kwargs)
+            return self.da.cf.plot.contour(*args, **kwargs)
 
 
     def vartype(self, verbose=False):
