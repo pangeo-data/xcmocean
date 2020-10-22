@@ -22,9 +22,21 @@ class xromsDataArrayAccessor:
     
     
     def plot(self, *args, **kwargs):       
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.plot(*args, **kwargs)
-    
+
+    def pcolormesh(self, *args, **kwargs):
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+            return self.da.plot.pcolormesh(*args, **kwargs)
+
+    def contour(self, *args, **kwargs):
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+            return self.da.plot.contour(*args, **kwargs)
+
+    def contourf(self, *args, **kwargs):
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+            return self.da.plot.contourf(*args, **kwargs)
+
     
     def cfplot(self, *args, **kwargs):
         import cf_xarray
