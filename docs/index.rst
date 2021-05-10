@@ -7,8 +7,9 @@ Documentation for ``xcmocean``
 ==============================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
+
+   index
 
 
 ``xcmocean`` is a tool that automatically chooses a colormap for your ``xarray`` plot and can be used with ``cf-xarray``. The tool will choose a colormap for your plotted variable according to opinionated rules and ``xarray``'s built-in logic will choose whether it will be a `sequential or diverging <https://matplotlib.org/stable/tutorials/colors/colormaps.html>`_ colormap.
@@ -264,7 +265,7 @@ Return the sequential colormap and name:
 
 Change how it works
 -------------------
-
+To do, but see examples in code.
 
 
 Change existing variable
