@@ -81,6 +81,44 @@ class xromsDataArrayAccessor:
         return None
                 
 
+
+@xr.register_dataset_accessor("cmo")
+class xromsDatasetAccessor:
+    def __init__(self, ds):
+
+        self.ds = ds
+
+    
+    @property
+    def seq(self):
+        return SEQ[self.vartype()]
+    
+    @property
+    def div(self):
+        return DIV[self.vartype()]
+    
+    
+    def quiver(self, *args, **kwargs):
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+            return self.ds.plot.quiver(*args, **kwargs)
+
+        
+    def scatter(self, *args, **kwargs):
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+            return self.ds.plot.scatter(*args, **kwargs)
+
+    
+    def cfquiver(self, *args, **kwargs):
+        import cf_xarray
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+            return self.ds.cf.plot.quiver(*args, **kwargs)
+
+    
+    def cfscatter(self, *args, **kwargs):
+        import cf_xarray
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+            return self.ds.cf.plot.scatter(*args, **kwargs)
+
                 
 # use this if want to label all available variables
 #     def choose_vartype(self):
