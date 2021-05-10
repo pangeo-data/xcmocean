@@ -12,8 +12,8 @@
 #
 # import os
 # import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
+# sys.path.insert(0, os.path.abspath('sphinxext'))
+# sys.path.append(os.path.abspath('sphinxext'))
 
 # -- Project information -----------------------------------------------------
 
@@ -30,9 +30,14 @@ release = '0.1.dev1+g82f3253'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+# do not need to include any files with these
 extensions = [
+    'sphinx.ext.autodoc',
+    'matplotlib.sphinxext.plot_directive',
+    'IPython.sphinxext.ipython_directive',
+    'IPython.sphinxext.ipython_console_highlighting',
 ]
-
+# jupyter_execute_default_kernel='python3'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -48,6 +53,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = 'alabaster'
+# html_theme = "sphinx_book_theme"
+
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
