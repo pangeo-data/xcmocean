@@ -11,17 +11,17 @@ class xromsDataArrayAccessor:
 
         self.da = da
 
-    
+
     @property
     def seq(self):
         return SEQ[self.vartype()]
-    
+
     @property
     def div(self):
         return DIV[self.vartype()]
-    
-    
-    def plot(self, *args, **kwargs):       
+
+
+    def plot(self, *args, **kwargs):
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.plot(*args, **kwargs)
 
@@ -37,28 +37,28 @@ class xromsDataArrayAccessor:
         with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.plot.contourf(*args, **kwargs)
 
-    
+
     def cfplot(self, *args, **kwargs):
         import cf_xarray
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.cf.plot(*args, **kwargs)
-    
-    
+
+
     def cfpcolormesh(self, *args, **kwargs):
         import cf_xarray
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.cf.plot.pcolormesh(*args, **kwargs)
-    
-    
+
+
     def cfcontourf(self, *args, **kwargs):
         import cf_xarray
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.cf.plot.contourf(*args, **kwargs)
-    
-    
+
+
     def cfcontour(self, *args, **kwargs):
         import cf_xarray
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
             return self.da.cf.plot.contour(*args, **kwargs)
 
 
@@ -79,7 +79,7 @@ class xromsDataArrayAccessor:
         # if it gets here, didn't find a match
         print('no match found!')
         return None
-                
+
 
 
 @xr.register_dataset_accessor("cmo")
@@ -88,38 +88,62 @@ class xromsDatasetAccessor:
 
         self.ds = ds
 
-    
-    @property
-    def seq(self):
-        return SEQ[self.vartype()]
-    
-    @property
-    def div(self):
-        return DIV[self.vartype()]
-    
-    
-    def quiver(self, *args, **kwargs):
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
-            return self.ds.plot.quiver(*args, **kwargs)
 
-        
+    # @property
+    def seq(self, vartype):
+        return SEQ[vartype]
+
+    # @property
+    def div(self, vartype):
+        return DIV[vartype]
+
+
+    # Not sure what colormap to use for quiver
+    # def quiver(self, *args, **kwargs):
+    #     with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+    #         return self.ds.plot.quiver(*args, **kwargs)
+
+
     def scatter(self, *args, **kwargs):
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+        vartype = kwargs['hue']
+        with xr.set_options(cmap_sequential=self.seq(vartype),
+                            cmap_divergent=self.div(vartype)):
             return self.ds.plot.scatter(*args, **kwargs)
 
-    
-    def cfquiver(self, *args, **kwargs):
-        import cf_xarray
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
-            return self.ds.cf.plot.quiver(*args, **kwargs)
 
-    
+    # def cfquiver(self, *args, **kwargs):
+    #     import cf_xarray
+    #     with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):
+    #         return self.ds.cf.plot.quiver(*args, **kwargs)
+
+
     def cfscatter(self, *args, **kwargs):
         import cf_xarray
-        with xr.set_options(cmap_sequential=self.seq, cmap_divergent=self.div):   
+        vartype = kwargs['hue']
+        with xr.set_options(cmap_sequential=self.seq(vartype),
+                            cmap_divergent=self.div(vartype)):
             return self.ds.cf.plot.scatter(*args, **kwargs)
 
-                
+
+    def vartype(self, verbose=False):
+        for vartype, pattern in REGEX.items():
+            # match variable names
+            if self.da.name is not None:
+                if re.search(pattern, self.da.name.lower()):
+                    if verbose:
+                        print('%s matches %s in name' % (pattern, self.da.name.lower()))
+                    return vartype
+            for key, value in self.da.attrs.items():
+                if isinstance(value, str):
+                    if re.search(pattern, value):
+                        if verbose:
+                            print('%s matches %s in attributes' % (pattern, value))
+                        return vartype
+        # if it gets here, didn't find a match
+        print('no match found!')
+        return None
+
+
 # use this if want to label all available variables
 #     def choose_vartype(self):
 # #         obj = ds.copy(deep=True)
