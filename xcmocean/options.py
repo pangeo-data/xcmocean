@@ -6,7 +6,7 @@ REGEX = {
     "salt": "salt|salinity|psu",
     "vel": "u-momentum|u-velocity|v-momentum|v-velocity|vel|velocity|speed|u velocity|v velocity|m/s|meter second-1",
     "freq": "vort|vorticity|vertical_shear|dudz|dvdz|1/s|Coriolis",
-    "zeta": "zeta|ssh|mld",
+    "zeta": "zeta|ssh|mld|elevation|sea_surface|sea surface",
     "rho": "dense|density|kg/m^3",
     "energy": "energy|EKE|KE|PE|APE",
     "depths": "bathy|depths|bathymetry",
