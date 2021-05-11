@@ -3,4 +3,4 @@ sphinx==4.0.1
 matplotlib==3.4.1
 ipython==7.22.0
 xarray==0.17.0
-git+git://github.com/pangeo-data/xcmocean@main#egg=cmocean
+git+git://github.com/pangeo-data/xcmocean@main#egg=xcmocean
