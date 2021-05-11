@@ -3,7 +3,14 @@ xarray accessor for automating choosing colormaps, aimed at geosciences https://
 
 Also optional dependence on `cf-xarray`.
 
-Example usage:
+## Installation:
+
+You can pip install direct from this github repo. This is probably the easiest way to do install at the moment.
+```
+pip install git+git://github.com/pangeo-data/xcmocean
+```
+
+## Example usage:
 
 ```
 import xcmocean
