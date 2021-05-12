@@ -10,6 +10,8 @@ You can pip install direct from this github repo. This is probably the easiest w
 pip install git+git://github.com/pangeo-data/xcmocean
 ```
 
+It is also now available on PyPI so you can simply `pip install xcmocean`.
+
 ## Example usage:
 
 ```
