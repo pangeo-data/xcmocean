@@ -32,16 +32,24 @@ ds.salt.cmo.contourf(x='lon', y='lat')
 
 which would make a `contourf` plot of the `ds.salt` data using the `cmocean` `haline` colormap. More examples in the docs.
 
-## Dev installation
+## Dev installation for local work
+
+Clone the repo:
+```
+$ git clone https://github.com/pangeo-data/xcmocean.git
+```
+
+In the `xcmocean` directory, install conda environment:
+```
+$ conda env create -f environment.yml
+```
 
 To also develop this package, install additional packages with:
-
 ```
 $ conda install --file requirements-dev.txt
 ```
 
 To then check code before committing and pushing it to github, locally run
-
 ```
 $ pre-commit run --all-files
 ```
