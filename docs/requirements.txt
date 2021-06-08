@@ -1,9 +1,9 @@
-# docs/requirements.txt
-sphinx==4.0.1
-matplotlib==3.4.1
+dask==2021.4.0
 ipython==7.22.0
-xarray==0.17.0
-git+git://github.com/pangeo-data/xcmocean@main#egg=xcmocean
+matplotlib==3.4.1
 netcdf4==1.5.6
 scipy==1.6.2
-dask==2021.4.0
+# docs/requirements.txt
+sphinx==4.0.1
+xarray==0.17.0
+git+git://github.com/pangeo-data/xcmocean@main#egg=xcmocean
