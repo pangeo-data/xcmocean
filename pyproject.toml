@@ -19,7 +19,7 @@ quiet = false
 color = true
 
 [tool.isort]
-known_third_party = ["cmocean", "matplotlib", "xarray"]
+known_third_party = ["cmocean", "setuptools", "xarray"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
