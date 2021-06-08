@@ -15,9 +15,9 @@ Also optional dependence on `cf-xarray`.
 
 ## Installation:
 
-You can pip install direct from this github repo. This is probably the easiest way to do install at the moment.
+You can pip install:
 ```
-pip install git+git://github.com/pangeo-data/xcmocean
+pip install xcmocean
 ```
 
 It is also now available on PyPI so you can simply `pip install xcmocean`.
