@@ -2,8 +2,10 @@
 [![Build Status](https://img.shields.io/github/workflow/status/pangeo-data/xcmocean/Tests?logo=github&style=for-the-badge)](https://github.com/pangeo-data/xcmocean/actions)
 [![Code Coverage](https://img.shields.io/codecov/c/github/pangeo-data/xcmocean.svg?style=for-the-badge)](https://codecov.io/gh/pangeo-data/xcmocean)
 [![License:MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Documentation Status](https://img.shields.io/readthedocs/extract_model/latest.svg?style=for-the-badge)](https://extract_model.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://img.shields.io/readthedocs/xcmocean/latest.svg?style=for-the-badge)](https://xcmocean.readthedocs.io/en/latest/?badge=latest)
 [![Code Style Status](https://img.shields.io/github/workflow/status/pangeo-data/xcmocean/linting%20with%20pre-commit?label=Code%20Style&style=for-the-badge)](https://github.com/pangeo-data/xcmocean/actions)
+[![Conda Version](https://img.shields.io/conda/vn/conda-forge/xcmocean.svg?style=for-the-badge)](https://anaconda.org/conda-forge/xcmocean)
+[![Python Package Index](https://img.shields.io/pypi/v/xcmocean.svg?style=for-the-badge)](https://pypi.org/project/xcmocean)
 
 xarray accessor for automating choosing colormaps, aimed at geosciences. Documentation at: https://xcmocean.readthedocs.io.
 
@@ -15,12 +17,16 @@ Also optional dependence on `cf-xarray`.
 
 ## Installation:
 
-You can pip install:
+You can pip install from PyPI:
 ```
 pip install xcmocean
 ```
 
-It is also now available on PyPI so you can simply `pip install xcmocean`.
+or install from conda-forge with
+```
+conda install -c conda-forge xcmocean
+```
+
 
 ## Example usage:
 
