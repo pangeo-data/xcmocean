@@ -7,7 +7,7 @@
 [![Conda Version](https://img.shields.io/conda/vn/conda-forge/xcmocean.svg?style=for-the-badge)](https://anaconda.org/conda-forge/xcmocean)
 [![Python Package Index](https://img.shields.io/pypi/v/xcmocean.svg?style=for-the-badge)](https://pypi.org/project/xcmocean)
 
-xarray accessor for automating choosing colormaps, aimed at geosciences. Documentation at: https://xcmocean.readthedocs.io.
+xarray accessor for automating choosing colormaps, aimed at geosciences.
 
 Also optional dependence on `cf-xarray`.
 
