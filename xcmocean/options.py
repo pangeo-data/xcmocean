@@ -22,7 +22,7 @@ REGEX = {
 }
 
 # sequential colormap defaults to viridis if variable type can't be determined
-SEQ = defaultdict(lambda: cmo.cm.viridis)
+SEQ = defaultdict(lambda: cmo.mpl.colormaps.get_cmap("viridis"))
 SEQ.update(
     {
         "temp": cmo.thermal,
